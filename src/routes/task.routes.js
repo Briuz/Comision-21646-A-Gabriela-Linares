@@ -1,20 +1,25 @@
 import { Router } from "express";
-import { ctrlCreateTasks, ctrlDeleteTasks, ctrlGetTasks, ctrlUpdateTasks } from "../controllers/task.controllers.js";
-import { validator} from "../middlewares/validator.js";
+import { ctrlCreateTask, ctrlDeleteTask, ctrlGetTasks, ctrlUpdateTask, ctrlView } from "../controllers/task.controllers.js";
+import { createTaskSchema, editTaskSchema } from "../models/schemas/task.schema.js";
+import { validator } from "../middlewares/validator.js";
 import { TaskModel } from "../models/Tasks.js";
 
 const taskRouter = Router();
 
-//endpoint para traer todas las tareas
-taskRouter.get('/api/tasks', ctrlGetTasks);
 
-//endpoint para crear una tareas
-taskRouter.post('/api/tasks', ctrlCreateTasks);
+// Ruta para ver los posts
+taskRouter.get("/tasks", ctrlView);
 
-//endpoint para modificar una tareas
-taskRouter.put('/api/tasks/:id', ctrlUpdateTasks);
+// Endpoint para traer todos los posts
+taskRouter.get("/api/tasks", ctrlGetTasks);
 
-//endpoint para eliminar una tareas
-taskRouter.delete('/api/tasks/:id', ctrlDeleteTasks);
+// Endpoint para crear un post
+taskRouter.post("/api/tasks", createTaskSchema, validator, ctrlCreateTask);
+
+// Endpoint para modificar un post
+taskRouter.put("/api/tasks/:id", editTaskSchema, validator, ctrlUpdateTask);
+
+// Endpoint para eliminar un post
+taskRouter.delete("/api/tasks/:id", ctrlDeleteTask);
 
 export { taskRouter };

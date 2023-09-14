@@ -3,7 +3,7 @@
 GET http://localhost:3000/tasks
 
 ### Traer los posts
-GET http://localhost:3000/api/tasks
+GET http://localhost:3000/api/tasks/
 
 ### Crear un nuevo post
 POST http://localhost:3000/api/tasks
@@ -12,15 +12,18 @@ Content-Type: application/json
 {
     "title": "Nuevo post",
     "description": "Escriba aqui su texto",
-    "poster": "www.url.com"
+    "poster": "http://www.url.com"
 }
-### MODIFICAR TAREA
-PUT http://localhost:3000/api/tasks/2
+### Modificar un post realizado
+PUT http://localhost:3000/api/tasks/1
 Content-Type: application/json
 
 {
-    "title": "24"
+    "title": 
+    "description":
+    "poster": 
+    
 }
 
-### ELIMINAR
-DELETE http://localhost:3000/api/tasks/3
+### Eliminar un post
+DELETE http://localhost:3000/api/tasks/1

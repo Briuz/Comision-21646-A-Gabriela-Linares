@@ -1,0 +1,24 @@
+body{
+  background-color:#dab79f;
+} 
+.card-img-top{
+  height: 300px;
+  width: 20rm;
+  object-fit: cover;
+}
+.btn-new{
+  background-color: #dab79f;
+border: solid;
+color: black;
+border-radius: 10%;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block ;
+font-size: 40px;
+
+}
+
+.d-flex {
+  font-family: 'DM Mono', monospace;
+}
