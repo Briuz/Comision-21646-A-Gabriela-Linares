@@ -1,5 +1,5 @@
 import express from 'express';
-import { taskRouter } from './src/routes/task.routes.js';
+import { postRouter } from './src/routes/post.routes.js';
 import { startDb } from './src/config/database.js';
 import path from 'node:path'
 import cors from 'cors'
@@ -29,9 +29,9 @@ app.set('view engine', 'ejs');
 
 const port = 3000;
 
-app.use('/', taskRouter)
+app.use('/', postRouter)
 
 app.listen(port, () => {
-    console.log(`servidor listo http://localhost:${port}/tasks`)
+    console.log(`servidor listo http://localhost:${port}/posts`)
     startDb()
 })

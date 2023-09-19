@@ -1,11 +1,11 @@
-import { TaskModel } from "../models/Tasks.js";
+import { PostModel } from "../models/Posts.js";
 
 
 // Controlador para mostrar la vista
 export const ctrlView = async (req, res) => {
   try {
-    const tasks = await TaskModel.findAll();
-    res.render("index.ejs", { tasks });
+    const posts = await PostModel.findAll();
+    res.render("index.ejs", { posts });
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -15,11 +15,11 @@ export const ctrlView = async (req, res) => {
 };
 
 //Controlador para traer todos los posts
-export const ctrlGetTasks = async (req, res) => {
+export const ctrlGetPost = async (req, res) => {
   try {
-    const task = await TaskModel.findAll();
-    if (!task) return res.status(404);
-    return res.status(200).json(task);
+    const post = await PostModel.findAll();
+    if (!post) return res.status(404);
+    return res.status(200).json(post);
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -29,10 +29,10 @@ export const ctrlGetTasks = async (req, res) => {
 };
 
 //Controlador para crear un post
-export const ctrlCreateTask = async (req, res) => {
+export const ctrlCreatePost = async (req, res) => {
   try {
-    const newTask = await TaskModel.create(req.body);
-    return res.status(201).json(newTask);
+    const newPost = await PostModel.create(req.body);
+    return res.status(201).json(newPost);
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -42,20 +42,20 @@ export const ctrlCreateTask = async (req, res) => {
 };
 
 //Controlador para modificar un post
-export const ctrlUpdateTask = async (req, res) => {
+export const ctrlUpdatePost = async (req, res) => {
   const { id } = req.params;
   try {
-    const task = await TaskModel.findByPk(id);
+    const post = await PostModel.findByPk(id);
 
-    if (!task) {
+    if (!post) {
       return res.status(404).json({
         message: "Post no encontrado",
       });
     }
 
-    task.update(req.body);
+    post.update(req.body);
 
-    return res.status(200).json(task);
+    return res.status(200).json(post);
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -65,15 +65,15 @@ export const ctrlUpdateTask = async (req, res) => {
 };
 
 //Controlador para eliminar un post
-export const ctrlDeleteTask = async (req, res) => {
+export const ctrlDeletePost = async (req, res) => {
   const { id } = req.params;
   try {
-    const taskDeleted = await TaskModel.destroy({
+    const postDeleted = await PostModel.destroy({
       where: {
         id: id,
       },
     });
-    if (!taskDeleted) {
+    if (!postDeleted) {
       return res.status(404).json({
         message: "Post no encontrado",
       });

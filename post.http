@@ -1,12 +1,12 @@
 
 ### Ver Posts
-GET http://localhost:3000/tasks
+GET http://localhost:3000/posts
 
 ### Traer los posts
-GET http://localhost:3000/api/tasks/
+GET http://localhost:3000/api/posts/
 
 ### Crear un nuevo post
-POST http://localhost:3000/api/tasks
+POST http://localhost:3000/api/posts
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
     "poster": "http://www.url.com"
 }
 ### Modificar un post realizado
-PUT http://localhost:3000/api/tasks/1
+PUT http://localhost:3000/api/posts/1
 Content-Type: application/json
 
 {
@@ -26,4 +26,4 @@ Content-Type: application/json
 }
 
 ### Eliminar un post
-DELETE http://localhost:3000/api/tasks/1
+DELETE http://localhost:3000/api/posts/1

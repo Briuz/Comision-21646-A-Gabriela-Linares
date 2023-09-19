@@ -38,7 +38,7 @@ document.addEventListener('click', (event) => {
           confirmButtonText: "¡Si, Eliminar!",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(`http://localhost:3000/api/tasks/${idArticle}`, {
+            fetch(`http://localhost:3000/api/posts/${idArticle}`, {
               method: "DELETE",
             })
               .then((res) => {
@@ -80,18 +80,18 @@ form.addEventListener("submit", (event) => {
   // console.log("submit");
 
   if (option === "new") {
-    const newTask = {
+    const newPost = {
       title: inputTitle.value,
       description: inputDescription.value,
       poster: inputPoster.value,
     };
 
-    fetch('http://localhost:3000/api/tasks', {
+    fetch('http://localhost:3000/api/posts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(newTask)
+      body: JSON.stringify(newPost)
     }).then(res => {
       console.log(res)
         if (res.ok) {
@@ -112,18 +112,18 @@ form.addEventListener("submit", (event) => {
   }
 
   if (option === "edit") {
-    const newTask = {
+    const newPost = {
       title: inputTitle.value,
       description: inputDescription.value,
       poster: inputPoster.value,
     };
 
-    fetch(`http://localhost:3000/api/tasks/${idForm}`, {
+    fetch(`http://localhost:3000/api/posts/${idForm}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(newTask)
+      body: JSON.stringify(newPost)
     }).then(res => {
       Swal.fire({
         position: 'top-end',
